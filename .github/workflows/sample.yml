@@ -1,0 +1,14 @@
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+job:
+  sample:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: sample
+        run: |
+          echo 'github.event.pull_request.head.ref' ${{ github.event.pull_request.head.ref }}
+          echo 'github.ref' ${{ github.ref }}
