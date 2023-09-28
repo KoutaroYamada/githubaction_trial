@@ -22,9 +22,9 @@ jobs:
               return `
               <details><summary>${dev}</summary>
             
-                \`\`\`shell
+              \`\`\`shell
                   gh workflow run hogehoge
-                \`\`\`
+              \`\`\`
               </details>
               `
             }).join('')
