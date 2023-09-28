@@ -14,9 +14,9 @@ jobs:
             const output = `
             <details><summary>dev11</summary>
 
-            ```shell
+            \`\`\`shell
             echo 'hello world'
-            ```
+            \`\`\`
             </details>
             <details><summary>dev12</summary>
             `
