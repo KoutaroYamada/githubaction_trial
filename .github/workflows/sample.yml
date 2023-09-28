@@ -24,11 +24,7 @@ jobs:
             
                 \`\`\`shell
                 gh workflow run hogehoge
-#                  -f service=fugafuga \\
-#                  -f branch_name=${{ github.head_ref }} \\
-#                  -f revision=${{ github.sha }} \\
-#                  -f environment=${dev} \\
-#                  --repo fizzbazz
+
                 \`\`\`
               </details>
               `
