@@ -11,7 +11,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const output = "
+            const output = `
             <details><summary>dev11</summary>
 
             ```shell
@@ -19,7 +19,7 @@ jobs:
             ```
             </details>
             <details><summary>dev12</summary>
-            "
+            `
             
             await core.summary
               .addHeading('sample', 2)
