@@ -23,4 +23,5 @@ jobs:
             
             await core.summary
               .addHeading('sample', 2)
+              .addRaw(output)
               .write()
