@@ -23,7 +23,7 @@ jobs:
               <details><summary>${dev}</summary>
             
                 \`\`\`shell
-                gh workflow run hogehoge
+                  gh workflow run hogehoge
                 \`\`\`
               </details>
               `
