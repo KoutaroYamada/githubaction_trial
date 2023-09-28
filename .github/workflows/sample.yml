@@ -12,7 +12,12 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            console.log("Hello, World!");
+            const output = `hello world`
+            await core.summary
+              .addHeading('sample', 2)
+              .addCodeBlock(output)
+              .write()
+
 #            const output = "
 #            <details><summary>dev11</summary>
 #
@@ -23,7 +28,3 @@ jobs:
 #            <details><summary>dev12</summary>
 #            "
 #
-#            await core.summary
-#              .addHeading('sample', 2)
-#              .addCodeBlock(output)
-#              .write()
