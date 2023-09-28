@@ -24,7 +24,6 @@ jobs:
             
                 \`\`\`shell
                 gh workflow run hogehoge
-
                 \`\`\`
               </details>
               `
