@@ -14,8 +14,7 @@ jobs:
             const output1 = `
               \`\`\`shell
                   gh workflow run hogehoge
-              \`\`\`
-            `
+              \`\`\``
             const output2 = `gh workflow run hogehoge`
             
             await core.summary
