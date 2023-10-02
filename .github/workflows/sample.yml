@@ -12,9 +12,11 @@ jobs:
         with:
           script: |
             const output1 = `
-              \`\`\`shell
-                  gh workflow run hogehoge
-              \`\`\``
+            \`aaa\`を\`bbb\`する
+            \`\`\`shell
+            gh workflow run hogehoge
+            \`\`\`
+            `
             const output2 = `gh workflow run hogehoge`
             
             await core.summary
