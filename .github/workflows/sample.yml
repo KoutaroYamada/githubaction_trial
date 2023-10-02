@@ -14,9 +14,12 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const output = `ref_name: ${{ github.ref_name }}, head_ref: ${{ github.head_ref }} ブランチ名: ${{ github.head_ref || github.ref_name }}` 
+            const output1 = `ref_name: ${{ github.ref_name }}, head_ref: ${{ github.head_ref }} ブランチ名: ${{ github.head_ref || github.ref_name }}` 
+            const output2 = `github_sha: ${{ github.sha }}, github.event.pull_request.head.sha: ${{ github.event.pull_request.head.sha }} リビジョン: ${{ github.event.pull_request.head.sha || github.sha }}`
             
             await core.summary
               .addHeading('sample', 2)
-              .addRaw(output)
+              .addRaw(output1)
+              .addHeading('sample2', 2)
+              .addRaw(output2)  
               .write()
