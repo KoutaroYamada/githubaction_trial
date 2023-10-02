@@ -11,27 +11,16 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const devList = [
-              'dev11',
-              'dev12',
-              'dev21',
-              'dev22',
-            ]
-            
-            const output = devList.map(dev => {
-              return `
-              <details><summary>${dev}</summary>
-            
+            const output1 = `
               \`\`\`shell
                   gh workflow run hogehoge
               \`\`\`
-              </details>
-              `
-            }).join('')
+            `
+            const output2 = `gh workflow run hogehoge`
             
             await core.summary
               .addHeading('sample', 2)
-              .addRaw(output)
+              .addRaw(output1)
               .addHeading('sample2', 2)
-              .addRaw("hogehoge")
+              .addCodeBlock(ouptut2)
               .write()
