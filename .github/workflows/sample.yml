@@ -1,4 +1,7 @@
 on:
+  push:
+    branches:
+      - main
   pull_request:
   workflow_dispatch:
 
@@ -11,13 +14,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const output1 = `
-            \`aaa\`を\`bbb\`する
-            \`\`\`shell
-            gh workflow run hogehoge
-            \`\`\`
-            `
-            const output2 = `gh workflow run hogehoge`
+            const output = `ref_name: ${{ github.ref }}, head_ref: ${{ github.head_ref }} ブランチ名: ${{ github.head_ref || github.ref }}`` 
             
             await core.summary
               .addHeading('sample', 2)
