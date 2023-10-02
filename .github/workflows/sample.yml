@@ -18,7 +18,5 @@ jobs:
             
             await core.summary
               .addHeading('sample', 2)
-              .addRaw(output1)
-              .addHeading('sample2', 2)
-              .addCodeBlock(output2)
+              .addRaw(output)
               .write()
