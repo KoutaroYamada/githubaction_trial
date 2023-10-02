@@ -1,0 +1,22 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: sample
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const output = `ref_name: ${{ github.ref }}, head_ref: ${{ github.head_ref }} ブランチ名: ${{ github.head_ref || github.ref }}` 
+            
+            await core.summary
+              .addHeading('sample', 2)
+              .addRaw(output)
+              .write()
