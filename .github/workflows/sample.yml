@@ -50,8 +50,7 @@ jobs:
               return
             }
             
-            const stgDeployCommand = `
-              gh workflow run hoge \\
+            const stgDeployCommand = `gh workflow run hoge \\
                 -f branch_name=${{ env.BRANCH_NAME }} \\
                 -f revision=${{ env.REVISION }} \\
                 --repo hoge
