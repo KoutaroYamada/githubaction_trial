@@ -20,7 +20,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            if (github.context.ref_type == 'tag') {
+            if (github.context.refType == 'tag') {
               const prodDeployCommand = `
                \`-f approver\`に渡す\`XXX\`を実際の承認者に置き換えて実行してください。
                 \`\`\`shell
