@@ -20,7 +20,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            if (github.ref_type == 'tag') {
+            if (${{ github.ref_type }} == 'tag') {
               console.log(tagの条件分岐を通過した)
               const prodDeployCommand = `
                \`-f approver\`に渡す\`XXX\`を実際の承認者に置き換えて実行してください。
