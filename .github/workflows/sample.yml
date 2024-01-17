@@ -24,8 +24,8 @@ jobs:
               const stgDeployCommand = `
                 \`\`\`shell
                 gh workflow run hoge \\
-                  -f branch_name=${{ env.branch_name }} \\
-                  -f revision=${{ env.revision }} \\
+                  -f branch_name=${{ env.BRANCH_NAME }} \\
+                  -f revision=${{ env.REVISION }} \\
                   --repo hoge
                 \`\`\`
               `
@@ -34,13 +34,13 @@ jobs:
                \`-f approver\`に渡す\`XXX\`を実際の承認者に置き換えて実行してください。
                 \`\`\`shell
                 gh workflow run fuga \\
-                  -f branch_name=${{ env.branch_name }} \\
-                  -f revision=${{ env.revision }} \\
+                  -f branch_name=${{ env.BRANCH_NAME }} \\
+                  -f revision=${{ env.REVISION }} \\
                   -f approver=XXX \\
                   --repo fuga
                 \`\`\`
               `
-            
+
               await core.summary
                 .addHeading('Staging Deploy Command', 2)
                 .addRaw(stgDeployCommand)
