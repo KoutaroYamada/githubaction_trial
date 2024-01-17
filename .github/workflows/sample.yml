@@ -23,6 +23,7 @@ jobs:
             if ('${{ github.ref_type }}' == 'tag') {
               const prodDeployCommand = `
                \`-f approver\`に渡す\`XXX\`を実際の承認者に置き換えて実行してください。
+            
                 \`\`\`shell
                 gh workflow run hoge \\
                   -f branch_name=${{ env.BRANCH_NAME }} \\
