@@ -42,6 +42,17 @@ jobs:
             const output1 = `ref_name: ${{ github.ref_name }}, head_ref: ${{ github.head_ref }} ブランチ名: ${{ github.head_ref || github.ref_name }} github.ref_type: ${{ github.ref_type }}` 
             const output2 = `github_sha: ${{ github.sha }}, github.event.pull_request.head.sha: ${{ github.event.pull_request.head.sha }} リビジョン: ${{ github.event.pull_request.head.sha || github.sha }}`
             const output3 = `branch_name: ${{ env.branch_name }}, revision: ${{ env.revision }}`
+            const deployCommand = `
+               \`-f approver\`に渡す\`XXX\`を実際の承認者に置き換えて実行してください。
+            
+                \`\`\`shell
+                gh workflow run hoge \\
+                  -f branch_name=${{ env.BRANCH_NAME }} \\
+                  -f revision=${{ env.REVISION }} \\
+                  -f approver=XXX \\
+                  --repo fuga
+                \`\`\`
+              `
             
             await core.summary
               .addHeading('sample', 2)
@@ -50,4 +61,6 @@ jobs:
               .addRaw(output2)  
               .addHeading('sample3', 2)
               .addRaw(output3)  
+              .addHeading('sample4', 2)
+              .addRaw(deployCommand)
               .write()
