@@ -54,16 +54,15 @@ jobs:
             const output2 = `github_sha: ${{ github.sha }}, github.event.pull_request.head.sha: ${{ github.event.pull_request.head.sha }} リビジョン: ${{ github.event.pull_request.head.sha || github.sha }}`
             const output3 = `branch_name: ${{ env.branch_name }}, revision: ${{ env.revision }}`
             const deployCommand = `
-               \`-f approver\`に渡す\`XXX\`を実際の承認者に置き換えて実行してください。
-            
-                \`\`\`shell
-                gh workflow run hoge \\
-                  -f branch_name=${{ env.branch_name }} \\
-                  -f revision=${{ env.revision }} \\
-                  -f approver=XXX \\
-                  --repo fuga
-                \`\`\`
-              `
+             \`-f environment\`に渡す\`devXX\`をデプロイ先の環境名に置き換えて実行してください。
+              \`\`\`shell
+              gh workflow run hoge \\
+                -f branch_name=${{ env.BRANCH_NAME }} \\
+                -f revision=${{ env.REVISION }} \\
+                -f environment=devXX \\
+                --repo hoge
+              \`\`\`
+            `
             
             await core.summary
               .addHeading('sample', 2)
