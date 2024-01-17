@@ -54,7 +54,7 @@ jobs:
             const output2 = `github_sha: ${{ github.sha }}, github.event.pull_request.head.sha: ${{ github.event.pull_request.head.sha }} リビジョン: ${{ github.event.pull_request.head.sha || github.sha }}`
             const output3 = `branch_name: ${{ env.branch_name }}, revision: ${{ env.revision }}`
             const deployCommand = `
-             \`-f environment\`に渡す\`devXX\`をデプロイ先の環境名に置き換えて実行してください。
+             \`-f environment\`に渡す値を修正して実行してください。
               \`\`\`shell
               gh workflow run hoge \\
                 -f branch_name=${{ env.BRANCH_NAME }} \\
