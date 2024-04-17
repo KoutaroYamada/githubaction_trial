@@ -17,9 +17,7 @@ jobs:
 
     steps:
       - name: sample
-        uses: actions/github-script@v6
-        with:
-          script: |
+        run: |
             echo "aaaaa"
             echo ${{ env.branch_name }}
             echo ${{ env.revision }}
