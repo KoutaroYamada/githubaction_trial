@@ -17,59 +17,7 @@ jobs:
 
     steps:
       - name: sample
-        uses: actions/github-script@v6
-        with:
-          script: |
-            if ('${{ github.ref_type }}' == 'tag') {
-              const stgDeployCommand = `
-                \`\`\`shell
-                gh workflow run hoge \\
-                  -f branch_name=${{ env.BRANCH_NAME }} \\
-                  -f revision=${{ env.REVISION }} \\
-                  --repo hoge
-                \`\`\`
-              `
-            
-              const prodDeployCommand = `
-               \`-f approver\`に渡す\`XXX\`を実際の承認者に置き換えて実行してください。
-                \`\`\`shell
-                gh workflow run fuga \\
-                  -f branch_name=${{ env.BRANCH_NAME }} \\
-                  -f revision=${{ env.REVISION }} \\
-                  -f approver=XXX \\
-                  --repo fuga
-                \`\`\`
-              `
-
-              await core.summary
-                .addHeading('Staging Deploy Command', 2)
-                .addRaw(stgDeployCommand)
-                .addHeading('Production Deploy Command', 2)
-                .addRaw(prodDeployCommand)
-                .write()
-              return
-            }
-            
-            const stgDeployCommand = `gh workflow run hoge \\
-                -f branch_name=${{ env.BRANCH_NAME }} \\
-                -f revision=${{ env.REVISION }} \\
-                --repo hoge
-            `
-          
-            const prodDeployCommand = `
-             \`-f approver\`に渡す\`XXX\`を実際の承認者に置き換えて実行してください。
-              \`\`\`shell
-              gh workflow run fuga \\
-                -f branch_name=${{ env.BRANCH_NAME }} \\
-                -f revision=${{ env.REVISION }} \\
-                -f approver=XXX \\
-                --repo fuga
-              \`\`\`
-            `
-
-            await core.summary
-              .addHeading('Staging Deploy Command', 2)
-              .addCodeBlock(stgDeployCommand)
-              .addHeading('Production Deploy Command', 2)
-              .addRaw(prodDeployCommand)
-              .write()
+        run: |
+            echo "aaaaa"
+            echo ${{ env.branch_name }}
+            echo ${{ env.revision }}
