@@ -19,3 +19,15 @@ jobs:
           if: ${{ startsWith(github.ref, 'refs/tags/v') }}
           run: |
             echo タグ起動です！！
+
+        - name: action-if-tagged3
+          if: ${{ github.event.ref_type != 'tag' }}
+          run: |
+            echo 2-タグ起動ではありません！！
+            echo github.event.ref_typeは${{ github.event.ref_type }}
+
+        - name: action-if-tagged4
+          if: ${{ github.event.ref_type == 'tag' }}
+          run: |
+            echo 2-タグ起動です！！
+            echo github.event.ref_typeは${{ github.event.ref_type }}
