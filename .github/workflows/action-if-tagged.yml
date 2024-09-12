@@ -13,6 +13,7 @@ jobs:
           if: github.event.ref_type != 'tag'
           run: |
             echo タグ起動ではありません！！
+            echo github.event.ref_type=${{ github.event.ref_type }}
 
         - name: action-if-tagged2
           if: github.event.ref_type == 'tag'
