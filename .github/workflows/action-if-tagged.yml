@@ -10,12 +10,12 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - name: action-if-tagged1
-          if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+          if: ${{ !startsWith(github.ref, 'refs/tags/v') }}
           run: |
             echo タグ起動ではありません！！
             echo github.event.ref_type=${{ github.event.ref_type }}
 
         - name: action-if-tagged2
-          if: ${{ !startsWith(github.ref, 'refs/tags/v') }}
+          if: ${{ startsWith(github.ref, 'refs/tags/v') }}
           run: |
             echo タグ起動です！！
