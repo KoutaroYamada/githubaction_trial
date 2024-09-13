@@ -25,6 +25,7 @@ jobs:
           run: |
             echo 2-タグ起動ではありません！！
             echo '${{ toJSON(github) }}'
+            echo github.ref_name=${{ github.ref_type }}
             echo github.event.ref_typeは${{ github.event.ref_type }}
 
         - name: action-if-tagged4
