@@ -24,6 +24,7 @@ jobs:
           if: ${{ github.event.ref_type != 'tag' }}
           run: |
             echo 2-タグ起動ではありません！！
+            echo ${{ toJSON(github.event) }}
             echo github.event.ref_typeは${{ github.event.ref_type }}
 
         - name: action-if-tagged4
