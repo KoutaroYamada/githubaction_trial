@@ -1,35 +1,24 @@
+name: tagged-action
+
 on:
+  workflow_dispatch:
   push:
-    branches:
-        - 'main'
     tags:
       - 'v*'
 
 jobs:
-    action-if-tagged:
-        runs-on: ubuntu-latest
-        steps:
-        - name: action-if-tagged1
-          if: ${{ !startsWith(github.ref, 'refs/tags/v') }}
-          run: |
-            echo タグ起動ではありません！！
-            echo github.event.ref_type=${{ github.event.ref_type }}
+  check-ref-type:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if ref is tag
+        if: github.ref_type != 'tag'
+        run: |
+          echo "refにブランチが指定されました。タグを指定してください。" >&2
+          exit 1
 
-        - name: action-if-tagged2
-          if: ${{ startsWith(github.ref, 'refs/tags/v') }}
-          run: |
-            echo タグ起動です！！
-
-        - name: action-if-tagged3
-          if: github.ref_type != 'tag'
-          run: |
-            echo 2-タグ起動ではありません！！
-            echo '${{ toJSON(github) }}'
-            echo github.ref_name=${{ github.ref_type }}
-            echo github.event.ref_typeは${{ github.event.ref_type }}
-
-        - name: action-if-tagged4
-          if: github.ref_type == 'tag'
-          run: |
-            echo 2-タグ起動です！！
-            echo github.event.ref_typeは${{ github.event.ref_type }}
+  call-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo github.ref_name
+        run: |
+          echo github ref_nameは${{ github.ref_name }}
