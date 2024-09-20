@@ -13,7 +13,7 @@ jobs:
       - name: Check if ref is tag
         if: github.ref_type != 'tag'
         run: |
-          echo "refにブランチが指定されました。タグを指定してください。" >&2
+          echo "refにブランチが指定されました。タグを指定してください。" 1>&2
           exit 1
 
   call-workflow:
