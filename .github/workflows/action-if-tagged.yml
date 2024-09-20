@@ -7,18 +7,17 @@ on:
       - 'v*'
 
 jobs:
-  check-ref-type:
+  action-if-tagged:
+    if: github.ref_type != 'tag'
     runs-on: ubuntu-latest
     steps:
       - name: Check if ref is tag
-        if: github.ref_type != 'tag'
         run: |
-          echo "refにブランチが指定されました。タグを指定してください。" 1>&2
+          echo "refにブランチが指定されました。タグを指定してください。"
           exit 1
 
   call-workflow:
-    runs-on: ubuntu-latest
-    steps:
-      - name: echo github.ref_name
-        run: |
-          echo github ref_nameは${{ github.ref_name }}
+    if: github.ref_type == 'tag'
+    uses: ./.github/workflows/reusable-workflow.yml
+    with:
+      ref_name: ${{ github.ref_name }}

@@ -1,0 +1,14 @@
+on:
+  workflow_call:
+    inputs:
+      ref_name:
+        type: string
+        required: true
+
+jobs:
+  hoge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo github.ref_name
+        run: |
+          echo github ref_nameは${{ inputs.ref_name }}
