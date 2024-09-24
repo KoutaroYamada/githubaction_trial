@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Check if ref is tag
         run: |
-          echo "refにブランチが指定されました。タグを指定してください。"
+          echo "refにブランチが指定されました。タグを指定してください。" >> $GITHUB_STEP_SUMMARY
           exit 1
 
   call-workflow:
