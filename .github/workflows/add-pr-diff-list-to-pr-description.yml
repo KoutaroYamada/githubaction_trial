@@ -1,0 +1,21 @@
+on:
+  pull_request:
+    types:
+      - opened
+      - labeled
+
+jobs:
+  add-pr-diff-list-to-pr-description:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Add PR diff list to PR description
+        run: |
+          echo "Pull Request Labels:"
+          # Iterate over labels and log each one
+          for label in "${{ toJSON(github.event.pull_request.labels) }}" | jq -r '.[].name'; do
+            echo "Label: $label"
+          done
